@@ -37,3 +37,7 @@ jobs:
 
       - name: Check weather Zip file is created or not.
         run: ls -l public.zip
+
+      - name: Upload Zip file to jfrog
+        run: |
+          curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://racheltest.jfrog.io/artifactory/rachel-generic-local/public.zip"
