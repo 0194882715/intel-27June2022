@@ -50,8 +50,18 @@ jobs:
 
       - name: Download the file from JFROG
         run: |
-          curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -O "https://racheltest.jfrog.io/artifactory/artifactory/rachel-generic-local/public.zip"
+          curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -O "https://racheltest.jfrog.io/artifactory/rachel-generic-local/public.zip"
           curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -O "https://racheltest.jfrog.io/artifactory/rachel-generic-local/public-$GITHUB_RUN_NUMBER.zip"
       - name: Test, if the File is downloaded successfully or not.
         run: |
           ls -la    
+      - name: Lets Unzip the Folder
+        run: |
+          unzip public.zip
+      - name: Lets Unzip the Folder
+        run: |
+          unzip public-$GITHUB_RUN_NUMBER.zip          
+      - name: Check the Contents of the Public Directory
+        run: |
+          ls -la
+          ls -la /public
