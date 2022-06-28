@@ -50,8 +50,8 @@ jobs:
 
       - name: Download the file from JFROG
         run: |
-          curl -L "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -O "https://racheltest.jfrog.io/artifactory/rachel-generic-local/public.zip"
-          curl -L "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -O "https://racheltest.jfrog.io/artifactory/rachel-generic-local/public-$GITHUB_RUN_NUMBER.zip"
+          curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -O "https://racheltest.jfrog.io/artifactory/rachel-generic-local/public.zip" -L
+          curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -O "https://racheltest.jfrog.io/artifactory/rachel-generic-local/public-$GITHUB_RUN_NUMBER.zip" -L
       - name: Test, if the File is downloaded successfully or not.
         run: |
           ls -la    
