@@ -57,10 +57,10 @@ jobs:
           ls -la    
       - name: Lets Unzip the Folder
         run: |
-          unzip public.zip
+          unzip public
       - name: Lets Unzip the Folder
         run: |
-          unzip public-$GITHUB_RUN_NUMBER.zip          
+          unzip public-$GITHUB_RUN_NUMBER          
       - name: Check the Contents of the Public Directory
         run: |
           ls -la
