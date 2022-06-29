@@ -45,7 +45,7 @@ jobs:
 
       - name: Run JFrog CLI
         run: |
-          jf rt dl aspdotnet-generic-local/public-latest.zip public.zip
+          jf rt dl aspdotnet-generic-local/public-latest.zip public.zip --url "https://racheltest.jfrog.io/artifactory/rachel-generic-local/"
       - name: Unzip the File
         run: |
           Expand-Archive .\public.zip . -Force
