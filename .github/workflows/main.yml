@@ -38,10 +38,10 @@ jobs:
       - name: Check weather Zip file is created or not.
         run: ls -l public.zip
 
-      - name: Upload Zip file to jfrog
-        run: |
-          curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://racheltest.jfrog.io/artifactory/rachel-generic-local/public.zip"
-          curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://racheltest.jfrog.io/artifactory/rachel-generic-local/public-$GITHUB_RUN_NUMBER.zip"
+      # - name: Upload Zip file to jfrog
+      #   run: |
+      #     curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://racheltest.jfrog.io/artifactory/rachel-generic-local/public.zip"
+      #     curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://racheltest.jfrog.io/artifactory/rachel-generic-local/public-$GITHUB_RUN_NUMBER.zip"
       
       - name: Copy the Public Folder to Ubuntu
         uses: marcodallasanta/ssh-scp-deploy@v1.2.0
@@ -53,6 +53,7 @@ jobs:
           password: ${{secrets.PASSWORD}}
           ssh_options: -o StrictHostKeyChecking=no
           pre_upload: rmdir /s /q public
+          #pre_upload: powershell "remove-item -force -recursive"
           post_upload: iisreset /stop && xcopy /s /y public C:\inetpub\wwwroot\ && iisreset /start        
   # deploy:
   #   runs-on: ubuntu-latest
