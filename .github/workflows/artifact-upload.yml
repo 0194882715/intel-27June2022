@@ -49,6 +49,7 @@ jobs:
           dir
       - name: Unzip the File
         run: |
+          dir
           Expand-Archive .\public.zip . -Force
       - name: Copy the Files from Work Dir to IIS Directory
         run: |
