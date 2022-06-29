@@ -45,7 +45,7 @@ jobs:
 
       - name: Run JFrog CLI
         run: |
-          jf rt dl aspdotnet-generic-local/public-latest.zip public.zip --url "https://racheltest.jfrog.io/artifactory/" --access-token ${{ secrets.JF_TOKEN }}
+          jf rt dl /rachel-generic-local/public-latest.zip public.zip --url "https://racheltest.jfrog.io/artifactory/" --access-token ${{ secrets.JF_TOKEN }}
           dir
       - name: Unzip the File
         run: |
