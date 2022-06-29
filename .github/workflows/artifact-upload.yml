@@ -39,7 +39,7 @@ jobs:
           curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://racheltest.jfrog.io/artifactory/rachel-generic-local/public-$GITHUB_RUN_NUMBER.zip"
           curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://racheltest.jfrog.io/artifactory/rachel-generic-local/public-latest.zip"
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build
     steps:
 
